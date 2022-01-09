@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scada:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <svg style="display: none" xmlns="http://www.w3.org/2000/svg" >
+            <symbol id="plus" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <line x1="7" y1="4.37114e-08" x2="7" y2="14" stroke-width="2"/>
+                <line y1="7" x2="14" y2="7" stroke-width="2"/>
+            </symbol>
+        </svg>
+        <div class="container">
+            <div class="main-title">Назва заголовка</div>
+            <button class="btn-add">
+                <!-- <use xlink:href="#plus"></use> -->
+                
+                <svg id="plus" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <line x1="7" y1="4.37114e-08" x2="7" y2="14" stroke-width="2"/>
+                    <line y1="7" x2="14" y2="7" stroke-width="2"/>
+                </svg>
+            </button>
+            <hr>
+            <input type="text" placeholer="Введіть текст" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
+            <div class="btns">
+                <button class="btn btn--primary" v-on:click="addTask">Зберегти</button>
+                <button class="btn btn--danger">Скасувати</button>
+            </div>
+            <hr>
+            <div class="title">Список карток</div>
+            <ul class="list">
+                <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">
+                    <label>
+                        <input type="checkbox" v-on:change="doCheck(index, 'need')">
+                        <span>{{ mask.title }}</span>
+                    </label>
+                    <button v-on:click="removeMask(index, 'need')">Видалити</button>
+                </li>
+            </ul>
+            <hr>
+            <div class="acc">
+                <div class="acc__title">{{ completeList.length }} пунктів виконано</div>
+                <ul class="acc__content">
+                    <li v-for="(mask, index) in completeList" :key="mask.id" v-on:click="doCheck(index, 'complete')" class="done-item">{{ mask.title }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+</html>
