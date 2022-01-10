@@ -18,13 +18,13 @@
                     <line y1="7" x2="14" y2="7" stroke-width="2"/>
                 </svg>
             </button>
-            <hr>
-            <input type="text" placeholer="Введіть текст" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
-            <div class="btns">
-                <button class="btn btn--primary" v-on:click="addTask">{{ this.$t("save") }}</button>
-                <button class="btn btn--danger">{{ this.$t("cancel") }}</button>
+            <div class="adding-box">
+                <input type="text" placeholer="Введіть текст" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
+                <div class="btns">
+                    <button class="btn btn--primary" v-on:click="addTask">{{ this.$t("save") }}</button>
+                    <button class="btn btn--danger">{{ this.$t("cancel") }}</button>
+                </div>
             </div>
-            <hr>
             <div class="title">{{ this.$t("list") }}</div>
             <ul class="list">
                 <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">

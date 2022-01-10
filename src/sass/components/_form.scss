@@ -6,6 +6,8 @@ input {
   border: 1px solid #D2D1D1;
   box-sizing: border-box;
   border-radius: 3px;
+  min-width: 268px;
+  outline: none;
   &::placeholder {
     color: #D2D1D1;
   }
