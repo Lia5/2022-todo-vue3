@@ -7,7 +7,9 @@
             </symbol>
         </svg>
         <div class="container">
-            <div class="main-title">Назва заголовка</div>
+            <app-lang></app-lang>
+
+            <div class="main-title">{{ this.$t("main_title") }}</div>
             <button class="btn-add">
                 <!-- <use xlink:href="#plus"></use> -->
                 
@@ -19,11 +21,11 @@
             <hr>
             <input type="text" placeholer="Введіть текст" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
             <div class="btns">
-                <button class="btn btn--primary" v-on:click="addTask">Зберегти</button>
-                <button class="btn btn--danger">Скасувати</button>
+                <button class="btn btn--primary" v-on:click="addTask">{{ this.$t("save") }}</button>
+                <button class="btn btn--danger">{{ this.$t("cancel") }}</button>
             </div>
             <hr>
-            <div class="title">Список карток</div>
+            <div class="title">{{ this.$t("list") }}</div>
             <ul class="list">
                 <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">
                     <label>
@@ -35,7 +37,7 @@
             </ul>
             <hr>
             <div class="acc">
-                <div class="acc__title">{{ completeList.length }} пунктів виконано</div>
+                <div class="acc__title">{{ completeList.length }} {{ this.$t("count_done") }}</div>
                 <ul class="acc__content">
                     <li v-for="(mask, index) in completeList" :key="mask.id" v-on:click="doCheck(index, 'complete')" class="done-item">{{ mask.title }}</li>
                 </ul>
@@ -45,7 +47,11 @@
 </template>
 
 <script>
+    import Lang from './components/Lang.vue'
     export default {
+        components: {
+            'app-lang': Lang
+        },
         data() {
             return {
                 valueInput: '',

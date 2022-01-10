@@ -3,6 +3,7 @@
 body {
     font-family: 'Scada', sans-serif;
     box-sizing: border-box;
+    color: #282828;
 }
 .container {
     width: 100%;
@@ -11,3 +12,11 @@ body {
 }
 @import "components/btn.scss";
 @import "components/form.scss";
+
+.main-title {
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 40px;
+
+}

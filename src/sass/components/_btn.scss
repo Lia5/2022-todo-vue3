@@ -1,0 +1,67 @@
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 41px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 40px;
+  font-size: 16px;
+  line-height: 20px;
+  background: #FFFFFF;
+  border: 1px solid #1B84BF;
+  box-sizing: border-box;
+  border-radius: 3px;
+  transition: 0.5s;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+  }
+  &--primary {
+    color: $main-color;
+    border-color: $main-color;
+    &:hover {
+      background-color: $main-color;
+    }
+  }
+  &--danger {
+    color: #BF1B1B;
+    border-color: #BF1B1B;
+    &:hover {
+      background-color: #BF1B1B;
+    }
+  }
+  &+.btn {
+    margin-left: 30px;
+  }
+}
+.btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin-left: auto;
+  padding: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid $main-color;
+  box-shadow: -2px 0px 3px rgba(40, 40, 40, 0.18);
+  transition: 0.5s;
+  svg {
+    width: 14px;
+    height: 14px;
+    stroke: #282828;
+    transition: 0.5s;
+  }
+  &:hover {
+    cursor: pointer;
+    background: $main-color;
+    svg {
+      stroke: #fff;
+    }
+  }
+}
