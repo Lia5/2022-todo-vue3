@@ -1,0 +1,27 @@
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #1B84BF;
+  box-shadow: -2px 0px 3px rgba(40, 40, 40, 0.18);
+  transition: 0.5s;
+  svg {
+    width: 14px;
+    height: 14px;
+    stroke: #282828;
+    transition: 0.5s;
+  }
+  &:hover {
+    cursor: pointer;
+    background: #1B84BF;
+    svg {
+      stroke: #fff;
+    }
+  }
+}

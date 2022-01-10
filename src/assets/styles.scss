@@ -1,0 +1,13 @@
+@import "variables.scss";
+
+body {
+    font-family: 'Scada', sans-serif;
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+@import "components/btn.scss";
+@import "components/form.scss";
