@@ -16,6 +16,7 @@
 </template>
 <script>
     export default {
+        name: 'Lang',
         data(){
             return {
                 selectedLanguage: 'ua',

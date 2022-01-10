@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import Lang from './components/Lang.vue'
+    import Lang from './views/components/Lang.vue'
     export default {
         components: {
             'app-lang': Lang
