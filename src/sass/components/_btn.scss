@@ -51,6 +51,7 @@
   border: 1px solid $main-color;
   box-shadow: -2px 0px 3px rgba(40, 40, 40, 0.18);
   transition: 0.5s;
+  cursor: pointer;
   svg {
     width: 14px;
     height: 14px;
@@ -58,10 +59,29 @@
     transition: 0.5s;
   }
   &:hover {
-    cursor: pointer;
     background: $main-color;
     svg {
       stroke: #fff;
     }
+  }
+}
+.btn-cross {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  svg {
+    width: 8px;
+    height: 8px;
+    stroke: #BF1B1B;
+    transition: 0.5s;
+  }
+  &:hover {
+    box-shadow: 0px 0px 4px rgba(40, 40, 40, 0.18);
   }
 }

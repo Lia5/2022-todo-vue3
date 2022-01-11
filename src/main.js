@@ -6,5 +6,8 @@ import store from './store'
 import './sass/styles.scss'
 import i18n from './i18n'
 
-const app = createApp(App).use(i18n).use(store).use(router)
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+const app = createApp(App).use(i18n).use(store).use(router).use(VueSweetalert2);
 app.mount('#app')

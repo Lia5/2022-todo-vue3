@@ -23,6 +23,51 @@ import { createI18n } from 'vue-i18n'
         ua: ua,
         en: en,
         ru: ru
+    },
+    pluralizationRules: {
+        /**
+         * @param item {number} a item index given by the input to $tc: `$tc('path.to.rule', choiceIndex)`
+         * @param completeList {number} an overall amount of available items
+         * @returns a final item index to select plural word by
+         */
+        'ua': function(item, completeList) {
+            if(item === 0) {
+                return 0;
+            }
+            const teen = item > 10 && item < 20;
+            const endsWithOne = item%10 === 1;
+            if (completeList < 4 ){
+                return (!teen && endsWithOne) ? 1 : 2;
+            } 
+            if (!teen && endsWithOne) {
+                return 1;
+            }
+            if (!teen && item % 10 >= 2 && item % 10 <= 4) {
+                return 2;
+            }
+    
+            return (completeList < 4) ? 2 : 3;
+
+        },
+        'ru': function(item, completeList) {
+            if(item === 0) {
+                return 0;
+            }
+            const teen = item > 10 && item < 20;
+            const endsWithOne = item%10 === 1;
+            if (completeList < 4 ){
+                return (!teen && endsWithOne) ? 1 : 2;
+            } 
+            if (!teen && endsWithOne) {
+                return 1;
+            }
+            if (!teen && item % 10 >= 2 && item % 10 <= 4) {
+                return 2;
+            }
+    
+            return (completeList < 4) ? 2 : 3;
+
+        }
     }
   })
   
