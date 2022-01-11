@@ -1,0 +1,12 @@
+{
+    "main_title": "Title",
+    "list": "List",
+    "count_done": "items done | item done | items done",
+    "shure_to_delete": "Are you shure?",
+    "general": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "no": "No"
+    }
+}

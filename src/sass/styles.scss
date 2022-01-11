@@ -1,0 +1,43 @@
+@import "variables.scss";
+
+body {
+    font-family: 'Scada', sans-serif;
+    box-sizing: border-box;
+    color: #282828;
+}
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+@import "components/btn.scss";
+@import "components/form.scss";
+@import "components/list.scss";
+@import "components/swal.scss";
+
+.main-title {
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 18px;
+}
+.adding-box {
+    opacity: 0;
+    margin-top: 40px;
+    margin-bottom: 32px;
+    text-align: center;
+    transition: 0.5s;
+    pointer-events: none;
+    &.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+.title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+hr {
+    border-bottom: 1px solid rgba(40, 40, 40, 0.18);
+}
