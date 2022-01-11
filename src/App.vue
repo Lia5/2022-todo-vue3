@@ -26,26 +26,28 @@
                     <use xlink:href="#plus" />
                 </svg>
             </button>
-            <div class="title">{{ this.$t("list") }}</div>
-            <ul class="list">
-                <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">
-                    <label>
-                        <input type="checkbox" v-on:change="doCheck(index, 'need')">
-                        <span>{{ mask.title }}</span>
-                    </label>
-                    <button class="btn-cross" @click="removeAlert(index, 'need')">
-                        <svg>
-                            <use xlink:href="#cross" />
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-            <hr>
-            <div class="acc">
-                <div class="acc__title" :class="isOpen === true ? 'open' : '' " @click.prevent="changeOpen()">{{ completeList.length }} {{ this.$tc("count_done", completeList.length) }}</div>
-                <ul class="acc__content">
-                    <li v-for="(mask, index) in completeList" :key="mask.id" v-on:click="doCheck(index, 'complete')" class="done-item">{{ mask.title }}</li>
+            <div v-if="needDoList.length || completeList.length">
+                <div class="title">{{ this.$t("list") }}</div>
+                <ul class="list">
+                    <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">
+                        <label>
+                            <input type="checkbox" v-on:change="doCheck(index, 'need')">
+                            <span>{{ mask.title }}</span>
+                        </label>
+                        <button class="btn-cross" @click="removeAlert(index, 'need')">
+                            <svg>
+                                <use xlink:href="#cross" />
+                            </svg>
+                        </button>
+                    </li>
                 </ul>
+                <hr>
+                <div class="acc">
+                    <div class="acc__title" :class="isOpen === true ? 'open' : '' " @click.prevent="changeOpen()">{{ completeList.length }} {{ this.$tc("count_done", completeList.length) }}</div>
+                    <ul class="acc__content">
+                        <li v-for="(mask, index) in completeList" :key="mask.id" v-on:click="doCheck(index, 'complete')" class="done-item">{{ mask.title }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
   </div>
