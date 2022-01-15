@@ -24,12 +24,12 @@ npm run serve
 - в переводах используется Pluralization для разных окончаний в русском и украинском языках.
 
 
-<!-- 
+
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
+<!-- 
 ### Lints and fixes files
 ```
 npm run lint
