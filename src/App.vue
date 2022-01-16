@@ -14,29 +14,10 @@
             <app-lang></app-lang>
 
             <adding-box></adding-box>
-
-            <div v-if="needDoList.length || completeList.length">
-                <div class="title">{{ this.$t("list") }}</div>
-                <ul class="list">
-                    <li v-for="(mask, index) in needDoList" :key="mask.id" class="list__item">
-                        <label>
-                            <input type="checkbox" v-on:change="doCheck(index, 'need')">
-                            <span>{{ mask.title }}</span>
-                        </label>
-                        <button class="btn-cross" @click="removeAlert(index, 'need')">
-                            <svg>
-                                <use xlink:href="#cross" />
-                            </svg>
-                        </button>
-                    </li>
-                </ul>
+            <div class="lists" :class="needDoList.length || completeList.length ? 'show' : ''">
+                <need-do-list></need-do-list>
                 <hr>
-                <div class="acc">
-                    <div class="acc__title" :class="isOpen === true ? 'open' : '' " @click.prevent="changeOpen()">{{ completeList.length }} {{ this.$tc("count_done", completeList.length) }}</div>
-                    <ul class="acc__content">
-                        <li v-for="(mask, index) in completeList" :key="mask.id" v-on:click="doCheck(index, 'complete')" class="done-item">{{ mask.title }}</li>
-                    </ul>
-                </div>
+                <complete-list></complete-list>
             </div>
         </div>
   </div>
@@ -45,71 +26,33 @@
 <script>
     import Lang from './views/components/Lang.vue'
     import AddingBox from './views/components/AddingBox.vue'
-    import Swal from 'sweetalert2'
+    import NeedDoList from './views/components/NeedDoList.vue'
+    import CompleteList from './views/components/CompleteList.vue'
 
     export default {
         components: {
             'app-lang': Lang,
-            'adding-box': AddingBox
+            'adding-box': AddingBox,
+                NeedDoList,
+            'need-do-list': NeedDoList,
+            'complete-list': CompleteList
         },
         data() {
             return {
                 needDoList: [],
                 completeList: [],
-                isOpen: false
             };
         },
-        
+        // props: ['needDoList'],
         mounted () {
-            this.emitter.on('addTaskItem', valueInput => {
-               console.log(valueInput);
-               this.valueInput = valueInput;
-                this.needDoList.push({
-                    title: this.valueInput,
-                    id: Math.random()
-                });
+            this.emitter.on('needDo', needDoList => {
+               this.needDoList = needDoList
             })
-
+            this.emitter.on('completeDo', completeList => {
+               this.completeList = completeList
+            })
         },
         methods: {
-            doCheck (index, type) {
-                if(type === 'need') {
-                    const completeMask = this.needDoList.splice(index, 1);
-                    this.completeList.push(...completeMask);
-                }
-                else {
-                    const noCompleteMask = this.completeList.splice(index, 1);
-                    this.needDoList.push(...noCompleteMask);
-                }
-            },
-            removeAlert (index, type) {
-                const toDoList = type === 'need' ? this.needDoList : this.completeList;
-                const self = this
-                Swal.fire({
-                    title: self.$t("shure_to_delete"),
-                    showCloseButton: false,
-                    showCancelButton: true,
-                    buttonsStyling: false,
-                    confirmButtonText: self.$t("general.yes"),
-                    cancelButtonText: self.$t("general.no"),
-                    customClass: {
-                        confirmButton: 'btn btn--primary',
-                        cancelButton: 'btn btn--danger',
-                        popup: 'swal2-popup--primary'
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        toDoList.splice(index, 1);
-                    }
-                });
-            },
-            changeOpen () {
-                if (this.isOpen === true) {
-                    this.isOpen = false
-                } else {
-                    this.isOpen = true
-                }
-            }
         }
     }
 

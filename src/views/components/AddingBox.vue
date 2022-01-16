@@ -24,7 +24,6 @@ export default {
 
         }
     },
-    props: ['needDoList'],
     methods: {
         showAddingBox () {
             document.querySelector('.adding-box').classList.add('show');
@@ -38,7 +37,6 @@ export default {
             this.valueInput = event.target.value;
         },
         addTask () {
-            console.log(this.valueInput);
             if(this.valueInput === '') { return }
             this.emitter.emit('addTaskItem', this.valueInput);
             this.valueInput = '';
