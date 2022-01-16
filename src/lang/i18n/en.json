@@ -9,5 +9,5 @@
         "yes": "Yes",
         "no": "No"
     },
-    "error_text": "Field is requared"
+    "error_text": "Field is required"
 }
