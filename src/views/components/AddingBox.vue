@@ -20,11 +20,12 @@ export default {
     name: 'AddingBox',
     data() {
         return {
+            valueInput: '',
 
         }
     },
+    props: ['needDoList'],
     methods: {
-
         showAddingBox () {
             document.querySelector('.adding-box').classList.add('show');
         },
@@ -32,12 +33,17 @@ export default {
             document.querySelector('.adding-box').classList.remove('show');
             document.getElementById('todo-field').value="";
         },
+
+        handlyInput (event) {
+            this.valueInput = event.target.value;
+        },
         addTask () {
             if(this.valueInput === '') { return }
-            this.needDoList.push({
+            this.$parent.needDoList.push({
                 title: this.valueInput,
                 id: Math.random()
             });
+            this.$emit('addTaskItem', this.valueInput)
             this.valueInput = '';
         },
     }

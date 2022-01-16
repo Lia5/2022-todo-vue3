@@ -13,7 +13,7 @@
         <div class="container">
             <app-lang></app-lang>
 
-            <adding-box></adding-box>
+            <adding-box v-on="addTaskItem"></adding-box>
 
             <div v-if="needDoList.length || completeList.length">
                 <div class="title">{{ this.$t("list") }}</div>
@@ -54,7 +54,6 @@
         },
         data() {
             return {
-                valueInput: '',
                 needDoList: [],
                 completeList: [],
                 isOpen: false
@@ -64,9 +63,6 @@
 
         },
         methods: {
-            handlyInput (event) {
-                this.valueInput = event.target.value;
-            },
             doCheck (index, type) {
                 if(type === 'need') {
                     const completeMask = this.needDoList.splice(index, 1);
