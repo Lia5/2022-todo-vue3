@@ -14,7 +14,7 @@ npm run serve
 npm run build
 ```
 ### Ссылка на задеплоенный проект
-https://lia5-todo-vue3.netlify.app/
+[https://lia5-todo-vue3.netlify.app/](https://lia5-todo-vue3.netlify.app/)
 ## Сделано:
 - на vue 3;
 - подключила 3 перевода  (хоть и не было в тз, но  используется везде) i18n + сделала переключатель языков;
