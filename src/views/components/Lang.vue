@@ -1,17 +1,18 @@
 <template>
     <div>
         <nav class="lang">
-            <a href="#" class="lang__item" :class="selectedLanguage === 'ua' ? 'active' : ''" @click.prevent="changeLanguage('ua')">UA</a>
-            <a href="#" class="lang__item" :class="selectedLanguage === 'en' ? 'active' : ''" @click.prevent="changeLanguage('en')">EN</a>
-            <a href="#" class="lang__item" :class="selectedLanguage === 'ru' ? 'active' : ''" @click.prevent="changeLanguage('ru')">RU</a>
+        <label v-for="item in langs" :key="item.lang" >
+            <input 
+                type="radio" 
+                :value="item.lang" 
+                name="lang" 
+                class="lang__item" 
+                v-model="selectedLanguage" 
+                @change="changeLanguage(item.lang)"
+                :class="selectedLanguage === item.lang ? 'active' : ''" >
+            <span>{{ item.lang }} </span>
+        </label>
         </nav>
-        <!--<nav>
-            <select class="custom-select" v-model="lang" @change="handleChange($event)">
-                <option value="ua">Ukraine</option>
-                <option value="en">English</option>
-                <option value="ru">Russian</option>
-            </select>
-        </nav> -->
     </div>
 </template>
 <script>
@@ -19,29 +20,26 @@
         name: 'Lang',
         data(){
             return {
+                langs: [
+                    { 
+                        lang: "ua" 
+                    },
+                    { 
+                        lang: "en" 
+                    },
+                    { 
+                        lang: "ru" 
+                    }
+                ],
                 selectedLanguage: 'ua',
-                locales: []
             }
         },
         methods: {
             changeLanguage (locale) {
                 this.$i18n.locale = locale
                 this.selectedLanguage = locale
-                
             } 
         },
-    //     data: function() {
-    //         const lang = localStorage.getItem('lang') || 'ua';
-    //         return {
-    //             lang: lang
-    //         }
-    //     },
-    //     methods: {
-    //         handleChange: function(event) {
-    //             localStorage.setItem('lang', event.target.value);
-    //             window.location.reload
-    //         }
-    //     }
     }
 </script>
 <style lang="scss">
@@ -51,12 +49,18 @@
         align-items: center;
         margin: 20px 0;
         &__item {
-            text-decoration: none;
-            color: #282828;
-            &+.lang__item {
-                margin-left: 20px;
+            display: none;
+            & + span {
+                display: inline-flex;
+                margin: 0 10px;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #282828;
+                cursor: pointer;
+                transition: 0.5s;
             }
-            &:hover {
+            &.active + span, 
+            &:hover + span {
                 color: $main-color;
             }
         }
