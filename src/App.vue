@@ -13,7 +13,7 @@
         <div class="container">
             <app-lang></app-lang>
 
-            <adding-box v-on="addTaskItem"></adding-box>
+            <adding-box></adding-box>
 
             <div v-if="needDoList.length || completeList.length">
                 <div class="title">{{ this.$t("list") }}</div>
@@ -59,7 +59,16 @@
                 isOpen: false
             };
         },
+        
         mounted () {
+            this.emitter.on('addTaskItem', valueInput => {
+               console.log(valueInput);
+               this.valueInput = valueInput;
+                this.needDoList.push({
+                    title: this.valueInput,
+                    id: Math.random()
+                });
+            })
 
         },
         methods: {

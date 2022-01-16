@@ -38,12 +38,9 @@ export default {
             this.valueInput = event.target.value;
         },
         addTask () {
+            console.log(this.valueInput);
             if(this.valueInput === '') { return }
-            this.$parent.needDoList.push({
-                title: this.valueInput,
-                id: Math.random()
-            });
-            this.$emit('addTaskItem', this.valueInput)
+            this.emitter.emit('addTaskItem', this.valueInput);
             this.valueInput = '';
         },
     }
