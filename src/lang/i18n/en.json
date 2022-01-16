@@ -8,5 +8,6 @@
         "cancel": "Cancel",
         "yes": "Yes",
         "no": "No"
-    }
+    },
+    "error_text": "Field is requared"
 }
