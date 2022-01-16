@@ -9,6 +9,12 @@ npm install
 ```
 npm run serve
 ```
+### Compiles and minifies for production
+```
+npm run build
+```
+### Ссылка на задеплоенный проект
+https://lia5-todo-vue3.netlify.app/
 ## Сделано:
 - на vue 3;
 - подключила 3 перевода  (хоть и не было в тз, но  используется везде) i18n + сделала переключатель языков;
@@ -37,10 +43,6 @@ npm run serve
 - добавлена валидация на заполнение текстового поля (Поле обязательно для заполнения) - вывод текстовой ошибки.
 
 
-### Compiles and minifies for production
-```
-npm run build
-```
 <!-- 
 ### Lints and fixes files
 ```
