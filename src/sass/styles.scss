@@ -4,14 +4,18 @@ body {
     font-family: 'Scada', sans-serif;
     box-sizing: border-box;
     color: #282828;
+    * {
+        box-sizing: border-box;
+    }
 }
 #app {
     margin-top: 25vh;
 }
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
+    padding: 0 25px;
 }
 @import "components/btn.scss";
 @import "components/form.scss";
