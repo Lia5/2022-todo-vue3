@@ -39,8 +39,6 @@
                 });
                 this.emitter.emit('needDo', this.needDoList);
                 this.emitter.emit('completeDo', this.completeList);
-                console.log(this.needDoList);
-                console.log(this.completeList);
             })
         },
         methods: {

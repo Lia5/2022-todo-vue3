@@ -19,7 +19,10 @@
                 <hr>
                 <complete-list></complete-list>
             </div>
+
         </div>
+        <app-weather></app-weather>
+
   </div>
 </template>
 
@@ -28,6 +31,7 @@
     import AddingBox from './views/components/AddingBox.vue'
     import NeedDoList from './views/components/NeedDoList.vue'
     import CompleteList from './views/components/CompleteList.vue'
+    import Weather from './views/components/Weather.vue'
 
     export default {
         components: {
@@ -35,7 +39,8 @@
             'adding-box': AddingBox,
                 NeedDoList,
             'need-do-list': NeedDoList,
-            'complete-list': CompleteList
+            'complete-list': CompleteList,
+            'app-weather': Weather
         },
         data() {
             return {

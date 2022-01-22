@@ -4,6 +4,9 @@ body {
     font-family: 'Scada', sans-serif;
     box-sizing: border-box;
     color: #282828;
+    * {
+        box-sizing: border-box;
+    }
 }
 #app {
     margin-top: 25vh;
