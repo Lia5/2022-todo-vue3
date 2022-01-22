@@ -13,8 +13,9 @@ body {
 }
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
+    padding: 0 25px;
 }
 @import "components/btn.scss";
 @import "components/form.scss";

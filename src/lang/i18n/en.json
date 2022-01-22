@@ -11,6 +11,17 @@
     },
     "error_text": "Field is required",
     "weather": {
+        "search": "Search...",
+        "errors": {
+            "400": "Fill the field.",
+            "403": "Access is denied.",
+            "404": "Not found. Fill the field correctly.",
+            "419": "Authentication Timeout.",
+            "500": "Internal server error.",
+            "request": "Request error.",
+            "other": "Error."
+        },
+        "error_empty": "Fill the field",
         "months": {
             "0": "Janury",
             "1": "February",

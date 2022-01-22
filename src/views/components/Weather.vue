@@ -6,12 +6,12 @@
                 <input 
                     type="text" 
                     class="search-bar" 
-                    placeholder="Search..."
+                    :placeholder = "this.$t('weather.search')"
                     v-model="query"
                     @keypress="getWeather"
                 >
             </div>
-            <div class="weather__wrap" v-if="typeof weather.main != 'undefined'" >
+            <div class="weather__wrap" v-if="isWeather() != 'undefined'" >
                 <div class="location-box">
                     <div class="location">
                         {{ weather.name }}, {{ weather.sys.country}}
@@ -23,6 +23,7 @@
                     <div class="weather__description">{{ weather.weather[0].description }}</div>
                 </div>
             </div>
+            <div class="weather__none" v-else>{{ this.error_text }}</div>
         </div>
 
     </div>
@@ -38,7 +39,7 @@ export default {
             url_base: 'https://api.openweathermap.org/data/2.5/',
             query: '',
             weather: {},
-            errors: [],
+            error_text: '',
             selectedLanguage: 'ua'
         }
     }, 
@@ -52,14 +53,28 @@ export default {
     created () {
     },
     methods: {
+        isWeather () {
+            return typeof this.weather.main;
+        },
         getWeather(e) {
             if (e.keyCode == 13 || e == 13) {
                 axios.get(`${this.url_base}weather?q=${this.query}&units=metric&lang=${this.selectedLanguage}&appid=${this.api_key}`)
                 .then(responce => {
                     this.weather = responce.data
+                    console.log(this.weather);
                 })
-                .catch( e => {
-                    this.errors.push(e);
+                .catch( err => {
+                    // this.errors.push(err);
+                    if (err.response) {
+                        this.error_text = this.$t(`weather.errors.${err.response.data.cod}`)
+                        // client received an error response (5xx, 4xx)
+                    } else if (err.request) {
+                        this.error_text = this.$t(`weather.errors.request}`)
+                        // client never received a response, or request never left 
+                    } else {
+                        this.error_text = this.$t(`weather.errors.other}`)
+                        // anything else 
+                    }
                 })
             }
         },
@@ -84,9 +99,9 @@ export default {
         background-size: cover;
         background-position: center;
         transition: 0.5s;
+        max-width: 300px;
         @media screen and (max-width: 1140px) {
             position: static;
-            max-width: 300px;
             margin: 30px auto;
         }
         &.warm {
@@ -111,6 +126,11 @@ export default {
         }
         &__wrap {
             color: #fff;
+        }
+        &__none {
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
         }
         &__box {
             text-align: center;
