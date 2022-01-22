@@ -21,7 +21,6 @@
             "request": "Request error.",
             "other": "Error."
         },
-        "error_empty": "Fill the field",
         "months": {
             "0": "Janury",
             "1": "February",
