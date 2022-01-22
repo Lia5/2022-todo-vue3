@@ -58,13 +58,12 @@ export default {
         },
         getWeather(e) {
             if (e.keyCode == 13 || e == 13) {
+                this.weather = {};
                 axios.get(`${this.url_base}weather?q=${this.query}&units=metric&lang=${this.selectedLanguage}&appid=${this.api_key}`)
                 .then(responce => {
                     this.weather = responce.data
-                    console.log(this.weather);
                 })
                 .catch( err => {
-                    // this.errors.push(err);
                     if (err.response) {
                         this.error_text = this.$t(`weather.errors.${err.response.data.cod}`)
                         // client received an error response (5xx, 4xx)
