@@ -1,7 +1,7 @@
 <template>
     <div class="weather" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : '' " >
         <div class="weather__overlay">
-            
+            <div class="weather__none">{{ this.$t('weather.title') }}</div>
             <div class="search-box">
                 <input 
                     type="text" 
@@ -115,6 +115,7 @@ export default {
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
         }
         .search-box {
+            margin-top: 15px;
             margin-bottom: 15px;
         }
         .search-bar {

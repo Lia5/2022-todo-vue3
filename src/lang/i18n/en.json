@@ -11,6 +11,7 @@
     },
     "error_text": "Field is required",
     "weather": {
+        "title": "Weather in the city",
         "search": "Search...",
         "errors": {
             "400": "Fill the field.",
