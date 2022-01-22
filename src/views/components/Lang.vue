@@ -39,7 +39,6 @@
                 this.$i18n.locale = locale
                 this.selectedLanguage = locale
                 this.emitter.emit('currentLang', this.selectedLanguage);
-                console.log(this.selectedLanguage);
             } 
         },
     }

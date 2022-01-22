@@ -8,10 +8,10 @@
                     class="search-bar" 
                     placeholder="Search..."
                     v-model="query"
-                    @keypress="fetchWeather"
+                    @keypress="getWeather"
                 >
             </div>
-            <div class="weather__wrap" v-if="typeof weather.main != 'undefined'">
+            <div class="weather__wrap" v-if="typeof weather.main != 'undefined'" >
                 <div class="location-box">
                     <div class="location">
                         {{ weather.name }}, {{ weather.sys.country}}
@@ -28,6 +28,8 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
     name: 'weather',
     data(){
@@ -36,30 +38,32 @@ export default {
             url_base: 'https://api.openweathermap.org/data/2.5/',
             query: '',
             weather: {},
+            errors: [],
+            selectedLanguage: 'ua'
         }
     }, 
     mounted () {
         this.emitter.on('currentLang', selectedLanguage => {
             this.selectedLanguage = selectedLanguage;
+            this.getWeather(13);
         })
     },
+
+    created () {
+    },
     methods: {
-        fetchWeather(e) {
-            if (e.key == "Enter") {
-                fetch(`${this.url_base}weather?q=${this.query}&units=metric&lang=${this.selectedLanguage}&appid=${this.api_key}`)
-                .then( res => {
-                    console.log(res);
-                    console.log(this.selectedLanguage);
-                    return res.json();
-                }).then(this.setResults);
+        getWeather(e) {
+            if (e.keyCode == 13 || e == 13) {
+                axios.get(`${this.url_base}weather?q=${this.query}&units=metric&lang=${this.selectedLanguage}&appid=${this.api_key}`)
+                .then(responce => {
+                    this.weather = responce.data
+                })
+                .catch( e => {
+                    this.errors.push(e);
+                })
             }
         },
-        setResults (results) {
-            this.weather =  results;
-                    console.log(this.selectedLanguage);
-        },
         dateBuilder () {
-                    console.log(this.selectedLanguage);
             let fullDate = new Date(),
                 day    = this.$t(`weather.days.${fullDate.getDay()}`),
                 date   = fullDate.getDate(),
@@ -80,9 +84,13 @@ export default {
         background-size: cover;
         background-position: center;
         transition: 0.5s;
+        @media screen and (max-width: 1140px) {
+            position: static;
+            max-width: 300px;
+            margin: 30px auto;
+        }
         &.warm {
             background-image: url('../../assets/weather/warm-bg.jpeg');
-            
         }
         &__overlay {
             width: 100%;
@@ -106,7 +114,6 @@ export default {
         }
         &__box {
             text-align: center;
-
         }
         &__temp {
             display: inline-block;
@@ -116,7 +123,6 @@ export default {
             background: rgba(255, 255, 255, 0.25);
             text-shadow: 3px 6px rgba(255, 255, 255, 0.25);
             box-shadow: -2px 0px 3px rgba(40, 40, 40, 0.18);
-    
         }
         &__description {
             font-size: 25px;
@@ -135,6 +141,5 @@ export default {
         font-size: 16px;
         text-align: center;
         font-style: italic;
-        
     }
 </style>
