@@ -24,6 +24,7 @@
                 </div>
             </div>
             <div class="weather__none" v-else>{{ this.error_text }}</div>
+            <router-link to="/weather" class="weather__link">{{ this.$t('weather.link') }}</router-link>
         </div>
 
     </div>
@@ -149,6 +150,11 @@ export default {
             font-style: italic;
             font-weight: 700;
             text-shadow: 3px 6px rgba(255, 255, 255, 0.25);
+        }
+        &__link {
+            font-size: 14px;
+            color: #fff;
+            text-align: right;
         }
     }
     .location {
