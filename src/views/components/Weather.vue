@@ -24,6 +24,11 @@
                 </div>
             </div>
             <div class="weather__none" v-else>{{ this.error_text }}</div>
+
+            {{ this.$router.currentRoute.path }}
+
+            <router-link v-if="isHome()" to="/" class="weather__link">{{ this.$t('weather.to_main') }}</router-link>
+            <router-link v-else to="/weather" class="weather__link">{{ this.$t('weather.link') }}</router-link>
         </div>
 
     </div>
@@ -53,6 +58,9 @@ export default {
     created () {
     },
     methods: {
+        isHome () {
+            return this.$router.currentRoute.value.path == '/weather';
+        },
         isWeather () {
             return typeof this.weather.main;
         },
@@ -149,6 +157,15 @@ export default {
             font-style: italic;
             font-weight: 700;
             text-shadow: 3px 6px rgba(255, 255, 255, 0.25);
+        }
+        &__link {
+            font-size: 14px;
+            color: #fff;
+            text-align: right;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
     .location {

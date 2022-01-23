@@ -45,6 +45,8 @@
             "4": "Thursday",
             "5": "Friday",
             "6": "Saturday"
-        }
+        },
+        "link": "Open in a new page",
+        "to_main": "Go to main page"
     }
 }
