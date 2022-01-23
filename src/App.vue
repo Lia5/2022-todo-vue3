@@ -10,56 +10,12 @@
                 <line x1="0.520254" y1="0.772184" x2="7.52968" y2="8.14977" />
             </symbol>
         </svg>
-        <div class="container">
-            <app-lang></app-lang>
 
-            <adding-box></adding-box>
-            <div class="lists" :class="needDoList.length || completeList.length ? 'show' : ''">
-                <need-do-list></need-do-list>
-                <hr>
-                <complete-list></complete-list>
-            </div>
-
-        </div>
-        <app-weather></app-weather>
-
+        <router-view></router-view>
   </div>
 </template>
 
 <script>
-    import Lang from './views/components/Lang.vue'
-    import AddingBox from './views/components/AddingBox.vue'
-    import NeedDoList from './views/components/NeedDoList.vue'
-    import CompleteList from './views/components/CompleteList.vue'
-    import Weather from './views/components/Weather.vue'
-
-    export default {
-        components: {
-            'app-lang': Lang,
-            'adding-box': AddingBox,
-                NeedDoList,
-            'need-do-list': NeedDoList,
-            'complete-list': CompleteList,
-            'app-weather': Weather
-        },
-        data() {
-            return {
-                needDoList: [],
-                completeList: [],
-            };
-        },
-        // props: ['needDoList'],
-        mounted () {
-            this.emitter.on('needDo', needDoList => {
-               this.needDoList = needDoList
-            })
-            this.emitter.on('completeDo', completeList => {
-               this.completeList = completeList
-            })
-        },
-        methods: {
-        }
-    }
 
 </script>
 
