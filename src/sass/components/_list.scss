@@ -5,20 +5,27 @@
     }
 }
 .list {
-    padding: 0;
-    margin: 15px 0 29px;
+    border: 1px solid #D2D1D1;
+    margin: 15px 0 30px;
+    padding: 0 calc(-1.5rem * -.5);
     list-style: none;
     &__item {
         display: flex;
         align-items: center;
         cursor: pointer;
+        padding: 10px 0;
+        &:not(:first-child) {
+            border-top: 1px solid #D2D1D1;
+        }
         span {
             padding-left: 20px;
-
         }
-        &+.list__item {
-            margin-top: 14px;
-        }
+    }
+    label {
+        cursor: pointer;
+    }
+    &--completed {
+        color: #6f6f6f;
     }
 }
 .acc {

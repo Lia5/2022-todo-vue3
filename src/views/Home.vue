@@ -1,17 +1,18 @@
 <template>
     <div>
         <div class="container">
-            <app-lang></app-lang>
+            <div class="offset-1 offset-lg-3 offset-xl-3 offset-xxl-4 col-10 col-lg-6 col-xl-6 col-xxl-4 ">
+                <app-lang></app-lang>
 
-            <adding-box></adding-box>
-            <div class="lists" :class="needDoList.length || completeList.length ? 'show' : ''">
-                <need-do-list></need-do-list>
-                <hr>
-                <complete-list></complete-list>
+                <adding-box></adding-box>
+                <div class="lists show">
+                    <need-do-list></need-do-list>
+                    <complete-list></complete-list>
+                </div>
             </div>
 
+
         </div>
-        <app-weather></app-weather>
     </div>
 </template>
 <script>
@@ -20,7 +21,6 @@
     import AddingBox from './components/AddingBox.vue'
     import NeedDoList from './components/NeedDoList.vue'
     import CompleteList from './components/CompleteList.vue'
-    import Weather from './components/Weather.vue'
 
     export default {
         components: {
@@ -28,8 +28,7 @@
             'adding-box': AddingBox,
                 NeedDoList,
             'need-do-list': NeedDoList,
-            'complete-list': CompleteList,
-            'app-weather': Weather
+            'complete-list': CompleteList
         },
         data() {
             return {

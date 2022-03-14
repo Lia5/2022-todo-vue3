@@ -1,19 +1,20 @@
 <template>
     <div>
         <div class="main-title">{{ this.$t("main_title") }}</div>
-        <div class="adding-box" :class="isShow ? 'show' : '' ">
-            <input id="todo-field" type="text" placeholer="Введіть текст" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
-            <div class="error" v-if="error">{{ this.$t("error_text") }}</div>
-            <div class="btns">
-                <button class="btn btn--primary" v-on:click="addTask">{{ this.$t("general.save") }}</button>
-                <button class="btn btn--danger" v-on:click="hideAddingBox">{{ this.$t("general.cancel") }}</button>
+        <div class="adding-box show">
+            <div class="adding-box__line">
+                <input id="todo-field" type="text" :placeholder="this.$t('new_task')" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask">
+                <button class="btn-add btn btn-primary" v-on:click="addTask">
+                    <svg>
+                        <use xlink:href="#plus" />
+                    </svg>
+                </button>
             </div>
+
+            <div class="error" v-if="error">{{ this.$t("error_text") }}</div>
+
+            <hr>
         </div>
-        <button class="btn-add" @click="showAddingBox">
-            <svg>
-                <use xlink:href="#plus" />
-            </svg>
-        </button>
     </div>
 </template>
 <script>
@@ -27,13 +28,10 @@ export default {
         }
     },
     methods: {
-        showAddingBox () {
-            this.isShow = true
-        },
-        hideAddingBox () {
-            this.isShow = false
-            document.getElementById('todo-field').value="";
-        },
+        // hideAddingBox () {
+        //     this.isShow = false
+        //     document.getElementById('todo-field').value="";
+        // },
 
         handlyInput (event) {
             this.valueInput = event.target.value;
@@ -52,8 +50,7 @@ export default {
 </script>
 <style lang="scss">
     .error {
-        max-width: 268px;
-        margin: 0 auto;
+        width: 100%;
         text-align: left;
         color: red;
         padding-top: 5px;

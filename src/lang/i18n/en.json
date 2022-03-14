@@ -1,6 +1,7 @@
 {
-    "main_title": "Title",
-    "list": "List",
+    "main_title": "Todolist App",
+    "new_task": "New task",
+    "done": "Done",
     "count_done": "items done | item done | items done",
     "shure_to_delete": "Are you shure?",
     "general": {
@@ -9,44 +10,5 @@
         "yes": "Yes",
         "no": "No"
     },
-    "error_text": "Field is required",
-    "weather": {
-        "title": "Weather in the city",
-        "search": "Search...",
-        "errors": {
-            "400": "Fill the field.",
-            "403": "Access is denied.",
-            "404": "Not found. Fill the field correctly.",
-            "419": "Authentication Timeout.",
-            "500": "Internal server error.",
-            "request": "Request error.",
-            "other": "Error."
-        },
-        "months": {
-            "0": "Janury",
-            "1": "February",
-            "2": "March",
-            "3": "April",
-            "4": "May",
-            "5": "June",
-            "6": "July",
-            "7": "August",
-            "8": "September",
-            "9": "October",
-            "10": "November",
-            "11": "December"
-        },
-
-        "days": {
-            "0": "Sunday",
-            "1": "Monday",
-            "2": "Tuesday",
-            "3": "Wednesday",
-            "4": "Thursday",
-            "5": "Friday",
-            "6": "Saturday"
-        },
-        "link": "Open in a new page",
-        "to_main": "Go to main page"
-    }
+    "error_text": "Field is required"
 }

@@ -1,5 +1,5 @@
-import ua from './lang/i18n/ua.json';
 import en from './lang/i18n/en.json';
+import ua from './lang/i18n/ua.json';
 import ru from './lang/i18n/ru.json';
 
 import { createI18n } from 'vue-i18n'
@@ -17,11 +17,11 @@ import { createI18n } from 'vue-i18n'
 //   }
   
   export default createI18n({
-    locale: process.env.VUE_APP_I18N_LOCALE || 'ua',
-    fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'ua',
+    locale: process.env.VUE_APP_I18N_LOCALE || 'en',
+    fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
     messages: {
-        ua: ua,
         en: en,
+        ua: ua,
         ru: ru
     },
     pluralizationRules: {

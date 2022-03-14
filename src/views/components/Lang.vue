@@ -22,16 +22,16 @@
             return {
                 langs: [
                     { 
-                        lang: "ua" 
+                        lang: "en" 
                     },
                     { 
-                        lang: "en" 
+                        lang: "ua" 
                     },
                     { 
                         lang: "ru" 
                     }
                 ],
-                selectedLanguage: 'ua',
+                selectedLanguage: 'en',
             }
         },
         methods: {

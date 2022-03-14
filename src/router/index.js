@@ -6,11 +6,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/weather',
-    name: 'PageWeather',
-    component: () => import('../views/PageWeather.vue')
   }
 ]
 

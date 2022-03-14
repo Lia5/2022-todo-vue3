@@ -11,12 +11,13 @@ body {
 #app {
     margin-top: 25vh;
 }
-.container {
-    width: 100%;
-    max-width: 550px;
-    margin: 0 auto;
-    padding: 0 25px;
-}
+// .container {
+    // width: 100%;
+    // max-width: 550px;
+    // margin: 0 auto;
+    // padding: 0 25px;
+// }
+@import "tools/bootstrap-grid.scss";
 @import "components/btn.scss";
 @import "components/form.scss";
 @import "components/list.scss";
@@ -39,6 +40,9 @@ body {
         opacity: 1;
         pointer-events: all;
     }
+    &__line {
+        display: flex;
+    }
 }
 .title {
     font-weight: 700;
@@ -46,5 +50,7 @@ body {
     line-height: 22px;
 }
 hr {
-    border-bottom: 1px solid rgba(40, 40, 40, 0.18);
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid #D2D1D1;
 }
